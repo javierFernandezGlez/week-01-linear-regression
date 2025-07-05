@@ -54,3 +54,28 @@ house_price_corr = correlation_matrix['MedHouseVal'].sort_values(ascending=False
 
 for feature, corr_value in house_price_corr.items():
     print(f"{feature}: {corr_value:.3f}")
+
+
+print("\n" + "="*50)
+print("3. SCATTER PLOT: Median Income vs House Value")
+print("="*50)
+
+plt.figure(figsize=(8, 6))
+
+plt.scatter(data['MedInc'], data['MedHouseVal'], alpha=0.5, color='red')
+
+plt.title('House Value vs Median Income', fontsize=14, fontweight='bold')
+
+plt.xlabel('Median Income (in $10,000s)', fontsize=12)
+
+plt.ylabel('House Value (in $100,000s)', fontsize=12)
+
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('scatter_medinc_vs_houseval.png', dpi=300, bbox_inches='tight')
+
+plt.show()
+
+print("\nNotice how higher median income neighborhoods tend to have higher house values. This is a strong positive relationship, which is why MedInc is so important for predicting house prices.")
+
