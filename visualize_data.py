@@ -28,3 +28,29 @@ plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.savefig('house_price_distribution.png', dpi=300, bbox_inches='tight')
 plt.show()
+
+
+print("\n" + "="*50)
+print("2. CORRELATION HEATMAP")
+print("="*50)
+
+correlation_matrix = data.corr()
+
+print(correlation_matrix)
+
+plt.figure(figsize=(12, 10))
+
+sns.heatmap(correlation_matrix, cmap='coolwarm', annot=True, fmt='.2f', square=True, cbar_kws={'shrink': 0.8})
+
+plt.title('Correlation Matrix of Housing Features', fontsize=16, fontweight='bold', pad=20)
+
+plt.tight_layout()
+
+plt.savefig('correlation_heatmap.png', dpi=300, bbox_inches='tight')
+
+plt.show()
+
+house_price_corr = correlation_matrix['MedHouseVal'].sort_values(ascending=False)
+
+for feature, corr_value in house_price_corr.items():
+    print(f"{feature}: {corr_value:.3f}")
