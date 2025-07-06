@@ -107,4 +107,8 @@ from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 
-print(scaler)
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+print(f"Mean of scaled training features (should be close to 0): {X_train_scaled.mean(axis=0)}")
+print(f"Std of scaled training features (should be close to 1): {X_train_scaled.std(axis=0)}")
