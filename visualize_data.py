@@ -79,3 +79,32 @@ plt.show()
 
 print("\nNotice how higher median income neighborhoods tend to have higher house values. This is a strong positive relationship, which is why MedInc is so important for predicting house prices.")
 
+
+print("\n" + "="*50)
+print("4. SPLITTING DATA FOR LINEAR REGRESSION")
+print("="*50)
+
+
+from sklearn.model_selection import train_test_split
+
+X = data.drop('MedHouseVal', axis=1)
+y = data['MedHouseVal']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+print(f"Training features shape: {X_train.shape}")
+print(f"Test features shape: {X_test.shape}")
+print(f"Training target shape: {y_train.shape}")
+print(f"Test target shape: {y_test.shape}")
+
+
+print("\n" + "="*50)
+print("5. FEATURE SCALING (Standardization)")
+print("="*50)
+
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+print(scaler)
