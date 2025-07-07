@@ -112,3 +112,34 @@ X_test_scaled = scaler.transform(X_test)
 
 print(f"Mean of scaled training features (should be close to 0): {X_train_scaled.mean(axis=0)}")
 print(f"Std of scaled training features (should be close to 1): {X_train_scaled.std(axis=0)}")
+
+
+print("\n" + "="*50)
+print("6. VISUALIZING SCALING EFFECT (MedInc & HouseAge)")
+print("="*50)
+
+features = ['MedInc', 'HouseAge']
+
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.hist(X_train[features]['MedInc'], bins=30, alpha=0.7, label='MedInc')
+plt.hist(X_train[features]['HouseAge'], bins=30, alpha=0.7, label='HouseAge')
+plt.title('Before Scaling')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.hist(X_train_scaled[:, 0], bins=30, alpha=0.7, label='MedInc (scaled)')
+plt.hist(X_train_scaled[:, 1], bins=30, alpha=0.7, label='HouseAge (scaled)')
+plt.title('After Scaling')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.legend()
+
+plt.tight_layout()
+plt.savefig('scaling_comparison.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+print("\nNotice how both features are now centered around 0 and have similar spread after scaling. This helps the model treat them equally!")
