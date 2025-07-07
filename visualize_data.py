@@ -143,3 +143,15 @@ plt.savefig('scaling_comparison.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 print("\nNotice how both features are now centered around 0 and have similar spread after scaling. This helps the model treat them equally!")
+
+print("\n" + "="*50)
+print("7. FITTING THE LINEAR REGRESSION MODEL")
+print("="*50)
+
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+model.fit(X_train_scaled, y_train)
+
+print("Model training complete!")
