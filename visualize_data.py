@@ -164,3 +164,19 @@ y_pred = model.predict(X_test_scaled)
 
 print("First 5 predicted house values:", y_pred[:5])
 print("First 5 actual house values:", y_test.values[:5])
+
+print("\n" + "="*50)
+print("9. EVALUATING THE MODEL")
+print("="*50)
+
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+
+r2 = r2_score(y_test, y_pred)
+
+mse = mean_squared_error(y_test, y_pred)
+
+mae = mean_absolute_error(y_test, y_pred)
+
+print(f"R² score: {r2:.3f} (1.0 is perfect, 0 is mean prediction)")
+print(f"Mean Squared Error: {mse:.3f}")
+print(f"Mean Absolute Error: {mae:.3f}")
