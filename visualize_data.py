@@ -180,3 +180,24 @@ mae = mean_absolute_error(y_test, y_pred)
 print(f"R² score: {r2:.3f} (1.0 is perfect, 0 is mean prediction)")
 print(f"Mean Squared Error: {mse:.3f}")
 print(f"Mean Absolute Error: {mae:.3f}")
+
+print("\n" + "="*50)
+print("10. VISUALIZING PREDICTIONS VS ACTUAL VALUES")
+print("="*50)
+
+plt.figure(figsize=(8, 6))
+
+plt.scatter(y_test, y_pred, alpha=0.5, color='purple', label='Predicted vs Actual')
+
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2, label='Perfect Prediction (y = x)')
+
+plt.xlabel('Actual House Value (in $100,000s)', fontsize=12)
+plt.ylabel('Predicted House Value (in $100,000s)', fontsize=12)
+plt.title('Predicted vs Actual House Values', fontsize=14, fontweight='bold')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig('predicted_vs_actual.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+print("\nIf the model were perfect, all points would fall on the dashed red line. The closer the points are to this line, the better the predictions!")
