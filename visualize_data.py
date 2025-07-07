@@ -155,3 +155,12 @@ model = LinearRegression()
 model.fit(X_train_scaled, y_train)
 
 print("Model training complete!")
+
+print("\n" + "="*50)
+print("8. MAKING PREDICTIONS ON THE TEST SET")
+print("="*50)
+
+y_pred = model.predict(X_test_scaled)
+
+print("First 5 predicted house values:", y_pred[:5])
+print("First 5 actual house values:", y_test.values[:5])
