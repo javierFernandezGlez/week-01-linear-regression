@@ -1,4 +1,4 @@
-import numoy as np
+import numpy as np
 
 def predict(X, w, b):
     """
