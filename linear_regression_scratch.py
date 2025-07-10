@@ -44,3 +44,28 @@ def gradient_descent_step(X, y, w, b, learning_rate):
     b = b - learning_rate * grad_b
 
     return w, b
+
+def train_linear_regression(X, y, learning_rate=0.01, epochs=1000, verbose=True):
+    """
+    Train linear regression using gradient descent.
+    X: (num_samples, num_features)
+    y: (num_samples,)
+    learning_rate: float
+    epochs: int, number of iterations
+    verbose: bool, whether to print loss during training
+    Returns: learned w, b, and list of loss values
+    """
+    num_features = X.shape[1]
+    w = np.zeros(num_features)
+    b = 0.0
+    loss_history = []
+
+    for epoch in range(epochs):
+        y_pred = predict(X, w, b)
+        loss = mean_squared_error(y, y_pred)
+        loss_history.append(loss)
+        w, b = gradient_descent_step(X, y, w, b, learning_rate)
+        if verbose and (epoch % 100 == 0 or epoch == epochs - 1):
+            print(f"Epoch {epoch}: Loss = {loss:.4f}")
+
+    return w, b, loss_history
