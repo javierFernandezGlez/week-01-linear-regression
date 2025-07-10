@@ -20,3 +20,27 @@ def mean_squared_error(y_true, y_pred):
     Returns: scalar (float)
     """
     return np.mean((y_true - y_pred) ** 2)
+
+def gradient_descent_step(X, y, w, b, learning_rate):
+    """
+    Perform one step of gradient descent for linear regression.
+    X: (num_samples, num_features)
+    y: (num_samples,)
+    w: (num_features,)
+    b: scalar
+    learning_rate: float
+    Returns: updated w, b
+    """
+    m = X.shape[0]  # number of samples
+    y_pred = predict(X, w, b)
+    error = y_pred - y
+
+    # Compute gradients
+    grad_w = (2/m) * np.dot(X.T, error)
+    grad_b = (2/m) * np.sum(error)
+
+    # Update parameters
+    w = w - learning_rate * grad_w
+    b = b - learning_rate * grad_b
+
+    return w, b
