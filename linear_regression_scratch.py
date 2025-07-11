@@ -86,3 +86,16 @@ def train_linear_regression(X, y, learning_rate=0.01, epochs=1000, verbose=True)
             print(f"Epoch {epoch}: Loss = {loss:.4f}")
 
     return w, b, loss_history
+
+print("\n" + "="*50)
+print("TRAINING LINEAR REGRESSION FROM SCRATCH")
+print("="*50)
+
+learning_rate = 0.01
+epochs = 1000
+
+w_scratch, b_scratch, loss_history = train_linear_regression(
+    X_train_scaled, y_train, learning_rate=learning_rate, epochs=epochs, verbose=True
+)
+
+print(f"\nFinal training loss: {loss_history[-1]:.4f}")
