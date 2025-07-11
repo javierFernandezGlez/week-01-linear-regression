@@ -1,4 +1,21 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+
+print("Loading California Housing dataset...")
+housing = fetch_california_housing()
+X = housing.data  
+y = housing.target  
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+mean = X_train.mean(axis=0)
+std = X_train.std(axis=0)
+
+X_train_scaled = (X_train - mean) / std
+X_test_scaled = (X_test - mean) / std
 
 def predict(X, w, b):
     """
