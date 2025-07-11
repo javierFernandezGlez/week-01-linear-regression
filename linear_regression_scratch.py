@@ -99,3 +99,17 @@ w_scratch, b_scratch, loss_history = train_linear_regression(
 )
 
 print(f"\nFinal training loss: {loss_history[-1]:.4f}")
+
+
+# PLOT THE LOSS CURVE
+
+plt.figure(figsize=(8, 5))
+plt.plot(loss_history, label='Training Loss (MSE)')
+plt.xlabel('Epoch')
+plt.ylabel('Mean Squared Error')
+plt.title('Training Loss Curve')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig('loss_curve.png', dpi=300, bbox_inches='tight')
+plt.show()
