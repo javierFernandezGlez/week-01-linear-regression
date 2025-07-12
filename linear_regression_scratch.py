@@ -136,3 +136,19 @@ plt.savefig('scratch_predicted_vs_actual.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 print("\nIf the model were perfect, all points would fall on the dashed red line. The closer the points are to this line, the better the predictions!")
+
+# --- 7. EVALUATE SCRATCH MODEL ON TEST SET ---
+print("\n" + "="*50)
+print("EVALUATION METRICS (SCRATCH MODEL)")
+print("="*50)
+
+# Mean Squared Error
+mse_scratch = mean_squared_error(y_test, y_pred_scratch)
+
+# R² Score (from scratch)
+ss_res = np.sum((y_test - y_pred_scratch) ** 2)
+ss_tot = np.sum((y_test - np.mean(y_test)) ** 2)
+r2_scratch = 1 - (ss_res / ss_tot)
+
+print(f"Mean Squared Error (MSE): {mse_scratch:.3f}")
+print(f"R² Score: {r2_scratch:.3f} (1.0 is perfect, 0 is mean prediction)")
