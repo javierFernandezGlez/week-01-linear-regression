@@ -113,3 +113,26 @@ plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.savefig('loss_curve.png', dpi=300, bbox_inches='tight')
 plt.show()
+
+# --- 6. PREDICTED VS ACTUAL PLOT (SCRATCH MODEL) ---
+print("\n" + "="*50)
+print("PREDICTED VS ACTUAL VALUES (SCRATCH MODEL)")
+print("="*50)
+
+# Make predictions on the test set
+y_pred_scratch = predict(X_test_scaled, w_scratch, b_scratch)
+
+# Scatter plot: actual values on x-axis, predicted values on y-axis
+plt.figure(figsize=(8, 6))
+plt.scatter(y_test, y_pred_scratch, alpha=0.5, color='green', label='Predicted vs Actual (Scratch)')
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2, label='Perfect Prediction (y = x)')
+plt.xlabel('Actual House Value (in $100,000s)', fontsize=12)
+plt.ylabel('Predicted House Value (in $100,000s)', fontsize=12)
+plt.title('Predicted vs Actual House Values (Scratch Model)', fontsize=14, fontweight='bold')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig('scratch_predicted_vs_actual.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+print("\nIf the model were perfect, all points would fall on the dashed red line. The closer the points are to this line, the better the predictions!")
